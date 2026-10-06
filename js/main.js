@@ -36,12 +36,13 @@ function validateForm() {
     // Kontrollera formulärets obligatoriska fält
     if (fullname.value === "") {
         console.log("Fullständigt namn är obligatoriskt.");
+        errors.push("Fullständigt namn är obligatoriskt.");
     } else {
         console.log("Valideringen lyckades.");
     }  ; 
 
     // Visa eventuella felmeddelanden
-
+    displayErrors();
     // Returnera resultatet (true eller false) av valideringen
 }
 
@@ -53,6 +54,12 @@ function displayErrors() {
     // Rensa tidigare felmeddelanden
 
     // Skriv ut aktuella felmeddelanden till DOM
+    errorList.innerHTML = "";
+    errors.forEach((error) => {
+        const li = document.createElement("li");
+        li.textContent = error;
+        errorList.appendChild(li);
+    });
 }
 
 
