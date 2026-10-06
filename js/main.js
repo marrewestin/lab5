@@ -62,7 +62,16 @@ function validateForm() {
 
     // Visa eventuella felmeddelanden
     displayErrors();
+
     // Returnera resultatet (true eller false) av valideringen
+    if (errors.length === 0) {
+        console.log("Formuläret är korrekt ifyllt.");
+        createStudentCard();
+        return true;
+    } else {
+        console.log("Formuläret innehåller fel.");
+        return false;
+    }
 }
 
 
@@ -70,10 +79,9 @@ function validateForm() {
  * Visar felmeddelanden på sidan.
  */
 function displayErrors() {
-    // Rensa tidigare felmeddelanden ???
-
-    // Skriv ut aktuella felmeddelanden till DOM
+    // Rensa tidigare felmeddelanden
     errorList.innerHTML = "";
+    // Skriv ut aktuella felmeddelanden till DOM
     errors.forEach((error) => {
         const li = document.createElement("li");
         li.textContent = error;
