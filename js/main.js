@@ -33,13 +33,32 @@ let history = [];
  * @returns {boolean}
  */
 function validateForm() {
+    errors = []; // Rensa tidigare felmeddelanden
+
     // Kontrollera formulärets obligatoriska fält
-    if (fullname.value === "") {
+    if (fullname.value.trim() === "") {
         console.log("Fullständigt namn är obligatoriskt.");
         errors.push("Fullständigt namn är obligatoriskt.");
+
     } else {
-        console.log("Valideringen lyckades.");
-    }  ; 
+        console.log(fullnameInput.value.trim());
+    };
+
+    if (email.value.trim() === "") {
+        console.log("E-postadress är obligatorisk.");
+        errors.push("E-postadress är obligatorisk.");
+
+    } else {
+        console.log(emailInput.value.trim());
+    }
+
+    if (phone.value === "") {
+        console.log("Telefonnummer är obligatoriskt.");
+        errors.push("Telefonnummer är obligatoriskt.");
+
+    } else {
+        console.log(phoneInput.value.trim());
+    };
 
     // Visa eventuella felmeddelanden
     displayErrors();
@@ -51,7 +70,7 @@ function validateForm() {
  * Visar felmeddelanden på sidan.
  */
 function displayErrors() {
-    // Rensa tidigare felmeddelanden
+    // Rensa tidigare felmeddelanden ???
 
     // Skriv ut aktuella felmeddelanden till DOM
     errorList.innerHTML = "";
