@@ -66,7 +66,6 @@ function validateForm() {
     // Returnera resultatet (true eller false) av valideringen
     if (errors.length === 0) {
         console.log("Formuläret är korrekt ifyllt.");
-        createStudentCard();
         return true;
     } else {
         console.log("Formuläret innehåller fel.");
@@ -137,8 +136,11 @@ function renderHistory() {
  */
 function clearForm() {
     // Återställ formulär och studentkort
-
+    fullname.value = "";
+    email.value = "";
+    phone.value = "";
     // Rensa eventuella felmeddelanden
+    errorList.innerHTML = "";
 }
 
 
@@ -154,21 +156,23 @@ function deleteHistory() {
 
 // Eventlyssnare
 form.addEventListener("submit", (event) => {
-    event.preventDefault();
     // När formuläret skickas:
+    event.preventDefault();
     // - validera inmatningen
     console.log("Formuläret skickas");
-    validateForm();
-    // - skapa studentkort om valideringen lyckas
+    if (validateForm()) {
+        // - skapa studentkort om valideringen lyckas
+        createStudentCard();
+        console.log("Studentkort skapas");
+    };
 });
-// När formuläret skickas:
-
-// - validera inmatningen
-// - skapa studentkort om valideringen lyckas
 
 
 // När användaren klickar på "Rensa"
-
+clearButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    clearForm();
+});
 
 // När användaren klickar på "Radera historik"
 
