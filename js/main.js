@@ -82,6 +82,7 @@ function displayErrors() {
 //const previewFullname = document.querySelector("#previewfullname");
 //const previewEmail = document.querySelector("#previewemail");
 //const previewPhone = document.querySelector("#previewphone");
+
 /**
  * Skapar ett studentkort och visar det på sidan.
  */
@@ -136,7 +137,7 @@ function renderHistory() {
     // Skriv ut innehållet i history till DOM
 }
 
-
+//const fontSelect = document.querySelector("#font");
 /**
  * Rensar formulär, aktuellt studentkort och felmeddelanden.
  */
@@ -145,6 +146,7 @@ function clearForm() {
     fullname.value = "";
     email.value = "";
     phone.value = "";
+    font.value = "Georgia";
     // Rensa eventuella felmeddelanden
     errorList.innerHTML = "";
 }
