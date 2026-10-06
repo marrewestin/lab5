@@ -39,25 +39,16 @@ function validateForm() {
     if (fullname.value.trim() === "") {
         console.log("Fullständigt namn är obligatoriskt.");
         errors.push("Fullständigt namn är obligatoriskt.");
-
-    } else {
-        console.log(fullnameInput.value.trim());
-    };
+    }
 
     if (email.value.trim() === "") {
         console.log("E-postadress är obligatorisk.");
         errors.push("E-postadress är obligatorisk.");
-
-    } else {
-        console.log(emailInput.value.trim());
     }
 
-    if (phone.value === "") {
+    if (phone.value.trim() === "") {
         console.log("Telefonnummer är obligatoriskt.");
         errors.push("Telefonnummer är obligatoriskt.");
-
-    } else {
-        console.log(phoneInput.value.trim());
     };
 
     // Visa eventuella felmeddelanden
@@ -88,14 +79,29 @@ function displayErrors() {
     });
 }
 
-
+//const previewFullname = document.querySelector("#previewfullname");
+//const previewEmail = document.querySelector("#previewemail");
+//const previewPhone = document.querySelector("#previewphone");
 /**
  * Skapar ett studentkort och visar det på sidan.
  */
 function createStudentCard() {
     // Hämta information från formuläret
+    const fullname = fullnameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const font = fontSelect.value;
+    console.log(fullnameInput.value.trim());
+    console.log(emailInput.value.trim());
+    console.log(phoneInput.value.trim());
 
     // Uppdatera studentkortet
+    previewFullname.textContent = fullname;
+    previewEmail.textContent = email;
+    previewPhone.textContent = phone;
+    //previewFullname.style.fontFamily = font;
+    //previewEmail.style.fontFamily = font;
+    //previewPhone.style.fontFamily = font;
 
     // Lägg till studentkortet i historiken
 
@@ -162,8 +168,8 @@ form.addEventListener("submit", (event) => {
     console.log("Formuläret skickas");
     if (validateForm()) {
         // - skapa studentkort om valideringen lyckas
-        createStudentCard();
         console.log("Studentkort skapas");
+        createStudentCard(); 
     };
 });
 
