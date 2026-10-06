@@ -34,6 +34,11 @@ let history = [];
  */
 function validateForm() {
     // Kontrollera formulärets obligatoriska fält
+    if (fullname.value === "") {
+        console.log("Fullständigt namn är obligatoriskt.");
+    } else {
+        console.log("Valideringen lyckades.");
+    }  ; 
 
     // Visa eventuella felmeddelanden
 
@@ -114,8 +119,16 @@ function deleteHistory() {
 
 
 // Eventlyssnare
-
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // När formuläret skickas:
+    // - validera inmatningen
+    console.log("Formuläret skickas");
+    validateForm();
+    // - skapa studentkort om valideringen lyckas
+});
 // När formuläret skickas:
+
 // - validera inmatningen
 // - skapa studentkort om valideringen lyckas
 
