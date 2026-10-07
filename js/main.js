@@ -108,6 +108,7 @@ function createStudentCard() {
     // Spara och uppdatera historiken
     saveHistory();
     loadHistory();
+    renderHistory();
 }
 
 /**
@@ -139,6 +140,11 @@ function renderHistory() {
     // Rensa tidigare visad historik
 
     // Skriv ut innehållet i history till DOM
+    history.forEach((studentCard) => {
+        const p = document.createElement("p");
+        p.innerHTML = `Namn: ${studentCard.fullname} <br> E-post: ${studentCard.email} <br> Telefon: ${studentCard.phone} <br> Typsnitt: ${studentCard.font}`;
+        historySection.appendChild(p);
+    });
 }
 
 /**
@@ -189,3 +195,4 @@ clearButton.addEventListener("click", (event) => {
 // När sidan laddas:
 // - läs in och visa eventuell tidigare historik
 loadHistory();
+renderHistory();
