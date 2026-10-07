@@ -138,7 +138,7 @@ function loadHistory() {
  */
 function renderHistory() {
     // Rensa tidigare visad historik
-
+    historySection.innerHTML = "";
     // Skriv ut innehållet i history till DOM
     history.forEach((studentCard) => {
         const p = document.createElement("p");
