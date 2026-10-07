@@ -64,7 +64,6 @@ function validateForm() {
     }
 }
 
-
 /**
  * Visar felmeddelanden på sidan.
  */
@@ -108,6 +107,7 @@ function createStudentCard() {
     
     // Spara och uppdatera historiken
     saveHistory();
+    loadHistory();
 }
 
 /**
@@ -123,12 +123,13 @@ function saveHistory() {
  */
 function loadHistory() {
     // Hämta eventuell sparad historik
-    /* const savedHistory = localStorage.getItem("studentHistory");
+    const savedHistory = localStorage.getItem("studentCard");
 
     if (savedHistory) {
         // Uppdatera history med sparad historik
         history = JSON.parse(savedHistory);
-    } */
+        console.log("Historik inläst från localStorage:", history);
+    }
 }
 
 /**
@@ -187,3 +188,4 @@ clearButton.addEventListener("click", (event) => {
 
 // När sidan laddas:
 // - läs in och visa eventuell tidigare historik
+loadHistory();
