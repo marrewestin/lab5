@@ -128,7 +128,7 @@ function saveHistory(fullname, email, phone, font) {
     console.log(studentCard);
     history.unshift(studentCard); // Lägg till i början av arrayen
     // Spara studentkortet i localStorage
-    localStorage.setItem("studentCard", JSON.stringify(studentCard));
+    localStorage.setItem("studentCard", JSON.stringify(history));
 }
 
 /**
