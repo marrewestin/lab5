@@ -83,51 +83,38 @@ function displayErrors() {
  * Skapar ett studentkort och visar det på sidan.
  */
 function createStudentCard() {
-    // Hämta information från formuläret
-    const fullname = fullnameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
-    const font = fontSelect.value;
-    console.log(fullname);
-    console.log(email);
-    console.log(phone);
+    // Hämta information från formuläret och spara i ett objekt
+    const studentCard = {
+        fullname: fullnameInput.value.trim(),
+        email: emailInput.value.trim(),
+        phone: phoneInput.value.trim(),
+        font: fontSelect.value
+    };
+
+    console.log(studentCard.fullname);
+    console.log(studentCard.email);
+    console.log(studentCard.phone);
 
     // Uppdatera studentkortet
-    previewFullname.textContent = fullname;
-    previewEmail.textContent = email;
-    previewPhone.textContent = phone;
-    previewFullname.style.fontFamily = font;
-    previewEmail.style.fontFamily = font;
-    previewPhone.style.fontFamily = font;
+    previewFullname.textContent = studentCard.fullname;
+    previewEmail.textContent = studentCard.email;
+    previewPhone.textContent = studentCard.phone;
+    previewFullname.style.fontFamily = studentCard.font;
+    previewEmail.style.fontFamily = studentCard.font;
+    previewPhone.style.fontFamily = studentCard.font;
 
     // Lägg till studentkortet i historiken
-    saveHistory(fullname, email, phone, font);
-    //const studentCard = { fullname, email, phone, font };
-    //history.unshift(studentCard); // Lägg till i början av arrayen
+    history.unshift(studentCard); // Lägg till i början av arrayen
+    
     // Spara och uppdatera historiken
-     //history.forEach((card) => {
-       // console.log(card);
-    //}); 
+    saveHistory();
 }
 
 /**
  * Sparar historiken i localStorage.
  */
-function saveHistory(fullname, email, phone, font) {
+function saveHistory() {
     // Spara history i localStorage
-   /*  history.forEach((card) => {
-        const historyJSON = JSON.stringify(history);
-        localStorage.setItem("studentHistory", historyJSON);
-    }) */
-    const studentCard = {
-        fullname: fullname,
-        email: email,
-        phone: phone,
-        font: font
-    };
-    console.log(studentCard);
-    history.unshift(studentCard); // Lägg till i början av arrayen
-    // Spara studentkortet i localStorage
     localStorage.setItem("studentCard", JSON.stringify(history));
 }
 
