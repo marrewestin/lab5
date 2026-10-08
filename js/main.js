@@ -36,31 +36,26 @@ function validateForm() {
     errors = []; // Rensa tidigare felmeddelanden
 
     // Kontrollera formulärets obligatoriska fält
-    if (fullname.value.trim() === "") {
-        console.log("Fullständigt namn är obligatoriskt.");
-        errors.push("Fullständigt namn är obligatoriskt.");
+    if (fullnameInput.value.trim() === "") { // Tar bort blanksteg och kontrollerar om namn är tomt
+        errors.push("Fullständigt namn är obligatoriskt."); // Felmeddelande om fältet är tomt
     }
 
-    if (email.value.trim() === "") {
-        console.log("E-postadress är obligatorisk.");
-        errors.push("E-postadress är obligatorisk.");
+    if (emailInput.value.trim() === "") { // Tar bort blanksteg och kontrollerar om e-postadress är tomt
+        errors.push("E-postadress är obligatorisk."); // Felmeddelande om fältet är tomt
     }
 
-    if (phone.value.trim() === "") {
-        console.log("Telefonnummer är obligatoriskt.");
-        errors.push("Telefonnummer är obligatoriskt.");
+    if (phoneInput.value.trim() === "") { // Tar bort blanksteg och kontrollerar om telefonnummer är tomt
+        errors.push("Telefonnummer är obligatoriskt."); // Felmeddelande om fältet är tomt
     };
 
     // Visa eventuella felmeddelanden
     displayErrors();
 
     // Returnera resultatet (true eller false) av valideringen
-    if (errors.length === 0) {
-        console.log("Formuläret är korrekt ifyllt.");
-        return true;
+    if (errors.length === 0) { // Kontrollerar om det finns något i errors-arrayen
+        return true; // Om errors-arrayen är tom validerar formuläret korrekt
     } else {
-        console.log("Formuläret innehåller fel.");
-        return false;
+        return false; // Om errors-arrayen innehåller felmeddelanden validerar formuläret inte korrekt
     }
 }
 
@@ -90,14 +85,11 @@ function createStudentCard() {
         font: fontSelect.value
     };
 
-    console.log(studentCard.fullname);
-    console.log(studentCard.email);
-    console.log(studentCard.phone);
-
     // Uppdatera studentkortet
     previewFullname.textContent = studentCard.fullname;
     previewEmail.textContent = studentCard.email;
     previewPhone.textContent = studentCard.phone;
+    // Uppdatera typsnittet på studentkortet
     previewFullname.style.fontFamily = studentCard.font;
     previewEmail.style.fontFamily = studentCard.font;
     previewPhone.style.fontFamily = studentCard.font;
@@ -129,7 +121,6 @@ function loadHistory() {
     if (savedHistory) {
         // Uppdatera history med sparad historik
         history = JSON.parse(savedHistory);
-        console.log("Historik inläst från localStorage:", history);
     }
 }
 
@@ -155,10 +146,10 @@ function renderHistory() {
  */
 function clearForm() {
     // Återställ formulär och studentkort
-    fullname.value = "";
-    email.value = "";
-    phone.value = "";
-    font.value = "Georgia";
+    fullnameInput.value = "";
+    emailInput.value = "";
+    phoneInput.value = "";
+    fontSelect.value = "Georgia";
     // Rensa eventuella felmeddelanden
     errorList.innerHTML = "";
 }
@@ -180,10 +171,8 @@ form.addEventListener("submit", (event) => {
     // När formuläret skickas:
     event.preventDefault();
     // - validera inmatningen
-    console.log("Formuläret skickas");
     if (validateForm()) {
         // - skapa studentkort om valideringen lyckas
-        console.log("Studentkort skapas");
         createStudentCard();
     };
 });
