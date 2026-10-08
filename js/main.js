@@ -142,6 +142,9 @@ function renderHistory() {
     // Skriv ut innehållet i history till DOM
     history.forEach((studentCard) => {
         const p = document.createElement("p");
+        p.style.border = "1px solid #ccc";
+        p.style.padding = "10px";
+        p.style.marginBottom = "10px";
         p.innerHTML = `Namn: ${studentCard.fullname} <br> E-post: ${studentCard.email} <br> Telefon: ${studentCard.phone} <br> Typsnitt: ${studentCard.font}`;
         historySection.appendChild(p);
     });
